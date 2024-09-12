@@ -1,0 +1,39 @@
+// -*- mode: jsonc -*-
+{
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "*": 10, // 5 workspaces by default on every monitor
+        }
+    },
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+    "modules-left": [
+        "hyprland/workspaces"
+        //"hyprland/window"
+    ],
+    "modules-center": [
+        "clock",
+    ],
+    "modules-right": [
+        "wireplumber",
+        "tray"
+    ],
+    "wireplumber": {
+        "format": "<span color=\"#ffffff\">VOL:</span> {volume}%",
+
+        "format-muted": "VOL: X",
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "America/Los_Angeles",
+        "interval": 1,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "<span color=\"#ffffff\">{:%a %B %d</span> | <span color=\"#ffffff\">%I:%M:%S %p}</span>",
+    },
+}
