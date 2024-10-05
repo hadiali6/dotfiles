@@ -1,0 +1,17 @@
+#NOTE:youcanusevarswith$<var>and${<var>}aslongasthestrisdoublequoted:""
+#WARNING:hexcolorscan'tcontaincapitalletters
+
+#-->Catppuccin(Mocha)
+thm_bg="#0c0c0c"
+thm_fg="#ffffff"
+thm_cyan="#ff832b"
+thm_black="#161616"
+thm_gray="#262626"
+thm_magenta="#ae7aff"
+thm_pink="#e3176f"
+thm_red="#fa4d56"
+thm_green="#42be65"
+thm_yellow="#f1c21b"
+thm_blue="#33b1ff"
+thm_orange="#b9b3b1"
+thm_black4="#393939"

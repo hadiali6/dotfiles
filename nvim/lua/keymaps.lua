@@ -1,5 +1,16 @@
 local vim = vim
 
+vim.keymap.set({ "n" }, "<leader>tw", function()
+    vim.print(vim.opt.wrap)
+    vim.opt.wrap = not vim.opt.wrap._value
+    vim.opt.linebreak = not vim.opt.linebreak._value
+end)
+
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<leader>tr", function()

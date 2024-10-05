@@ -106,16 +106,6 @@ local lsp_opts = {
                     end
                 end,
             })
-
-            vim.api.nvim_create_autocmd("LspDetach", {
-                group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
-
-                ---@param lsp_detach_args vim_autocmd_callback_args
-                callback = function(lsp_detach_args)
-                    vim.lsp.buf.clear_references()
-                    vim.api.nvim_clear_autocmds({ group = "lsp_word_*", buffer = lsp_detach_args.buf })
-                end,
-            })
         end
 
         if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
