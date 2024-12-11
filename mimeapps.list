@@ -1,0 +1,16 @@
+[Default Applications]
+x-scheme-handler/tonsite=org.telegram.desktop.desktop
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+application/browser=firefox.desktop
+text/plain=nvim.desktop
+x-scheme-handler/file=nvim.desktop
+inode/directory=nvim.desktop
+text/x-zig=nvim.desktop
+text/x-c=nvim.desktop
+
+[Added Associations]
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;
