@@ -1,9 +1,27 @@
 local vim = vim
 
+vim.keymap.set({ "n", "t", "x", "i" }, "<C-s>", Snacks.terminal.toggle, { desc = "toggle terminal" })
+
+vim.keymap.set("n", "<leader>wc", "z=", { desc = "Spell Check" })
+vim.keymap.set("n", "<leader>wf", "1z=", { desc = "Fix word with 1st suggestion" })
+
+vim.keymap.set("n", "<leader>a", "G$vgg0", { desc = "Select All" })
+
+vim.keymap.set("n", "<leader>tc", function()
+    local hl = vim.api.nvim_get_hl(0, { name = "Cursor" })
+    hl.blend = 100
+    vim.api.nvim_set_hl(0, "Cursor", hl)
+    vim.opt.guicursor:append("a:Cursor/lCursor")
+end)
+
 vim.keymap.set({ "n" }, "<leader>tw", function()
-    vim.print(vim.opt.wrap)
     vim.opt.wrap = not vim.opt.wrap._value
     vim.opt.linebreak = not vim.opt.linebreak._value
+    if vim.opt.linebreak._value == true then
+        vim.opt.colorcolumn = "0"
+    else
+        vim.opt.colorcolumn = "80"
+    end
 end)
 
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -38,3 +56,4 @@ vim.keymap.set("x", "<leader>xp", '"_xp')
 vim.keymap.set({ "x", "n" }, "<leader>xx", '"_x')
 vim.keymap.set({ "x" }, "<leader>dd", '"_d')
 vim.keymap.set({ "n" }, "<leader>dd", '"_dd')
+vim.keymap.set({ "n", "x", "t" }, "<leader><Tab>", "<C-^>")

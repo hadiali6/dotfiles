@@ -1,8 +1,6 @@
 local vim = vim
 local require = require
 
-local M = { "mfussenegger/nvim-lint" }
-
 ---@alias plugin_key { key: string, cmd: string|function, desc: string? }
 
 ---@param mapping string
@@ -15,18 +13,17 @@ end
 
 local toggler = false
 
----@type plugin_key[]
-M.keys = {
-    map(
-        "<leader>lb",
-        function()
+return {
+    "mfussenegger/nvim-lint",
+
+    ---@type plugin_key[]
+    keys = {
+        map("<leader>lb", function()
             local lint = require("lint")
             lint.linters_by_ft = {
                 lua = { "selene" },
             }
-            local ns = lint.get_namespace(
-                lint.linters_by_ft[vim.bo.ft][1]
-            )
+            local ns = lint.get_namespace(lint.linters_by_ft[vim.bo.ft][1])
             if toggler == true then
                 vim.diagnostic.reset(ns, vim.api.nvim_get_current_buf())
                 toggler = false
@@ -34,9 +31,6 @@ M.keys = {
                 lint.try_lint()
                 toggler = true
             end
-        end,
-        "Lint Buffer"
-    ),
+        end, "Lint Buffer"),
+    },
 }
-
-return M

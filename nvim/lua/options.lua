@@ -1,6 +1,13 @@
 local vim = vim
 local os = os
 
+if vim.g.neovide then
+    vim.opt.guifont = "jetbrainsmono nerd font:h14"
+    vim.opt.linespace = 11
+    vim.opt.linebreak = true
+    vim.opt.colorcolumn = "0"
+end
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
@@ -16,11 +23,11 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.statuscolumn = [[%!v:lua.require'util.statuscolumn'.setup()]]
+vim.opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.showcmd = false
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
@@ -31,7 +38,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.smartindent = false --TODO: try this later
-vim.opt.breakindent = true
+vim.opt.breakindent = false
 
 vim.opt.undofile = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vimundo"
@@ -50,6 +57,6 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.inccommand = "split"
 
-vim.opt.updatetime = 250
+vim.opt.updatetime = 150
 vim.opt.timeout = false
 -- vim.opt.timeoutlen = 300

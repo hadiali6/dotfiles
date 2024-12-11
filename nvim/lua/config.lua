@@ -1,5 +1,9 @@
 return {
-    ft = {
+    theme = "carbonfox",
+    indent_exlude_ft = {
+        "fidget",
+        "man",
+        "snacks_dashboard",
         "dashboard",
         "neo-tree",
         "trouble",

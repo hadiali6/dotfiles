@@ -1,4 +1,1 @@
-local require = require
-local vim = vim
-
-require("rainbow-delimiters").disable(vim.api.nvim_get_current_buf())
+vim.g.zig_fmt_parse_errors = false

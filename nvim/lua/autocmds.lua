@@ -23,3 +23,14 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.spell = true
     end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = augroup("mini_indentscope_disable"),
+    callback = function()
+        for _, filetype in ipairs(require("config").indent_exlude_ft) do
+            if filetype == vim.bo.ft then
+                vim.b.miniindentscope_disable = true
+            end
+        end
+    end,
+})
