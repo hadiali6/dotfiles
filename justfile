@@ -1,4 +1,4 @@
-all: init_home init_base init_dots install_aur_helper install_cli install_fonts install_gui install_nvidia_drivers install_vm
+all: init_home install_base init_dots install_aur_helper install_cli install_fonts install_gui install_nvidia_drivers install_vm
 
 init_home:
     #!/bin/sh
