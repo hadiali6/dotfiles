@@ -72,8 +72,8 @@ install_nvidia_drivers:
     MODULES_TO_ADD=("nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm")
     MKINITCPIO_CONF="/etc/mkinitcpio.conf"
 
-    if [[ ! -w $MKINITCPIO_CONF ]]; then
-        echo "Error: $MKINITCPIO_CONF does not exist or is not writable."
+    if [[ ! $MKINITCPIO_CONF ]]; then
+        echo "Error: $MKINITCPIO_CONF does not exist."
         exit 1
     fi
 
