@@ -57,7 +57,7 @@ install_fonts:
 
 install_gui:
     #!/bin/sh
-    paru -Syu --noconfirm hyprland wayland wayland-protocols wlr-protocols plasma-wayland-protocols frog-protocols xorg-server xorg-xrandr wl-clipboard xclip firefox alacritty foot waybar obs code zed emacs feh mpv flameshot grim slurp swww intellij-idea-community-edition qalculate-qt unclutter wlroots wlroots-git webcord-bin awesome-luajit-git picom-git
+    paru -Syu --noconfirm hyprland wayland wayland-protocols wlr-protocols plasma-wayland-protocols frog-protocols xorg-server xorg-xrandr wl-clipboard xclip firefox alacritty foot waybar obs-studio code zed emacs feh mpv flameshot grim slurp swww intellij-idea-community-edition qalculate-qt unclutter wlroots wlroots-git webcord-bin awesome-luajit-git picom-git
 
 install_lang:
     #!/bin/sh
