@@ -152,7 +152,7 @@ return {
 
                             local text = vim.api.nvim_buf_get_text(args.buf, token.line, token.start_col, token.line, token.end_col, {})[1]
 
-                            if (text == "pub" or text == "inline" or text == "volotile") and token.type == "keyword" then
+                            if (text == "pub" or text == "inline" or text == "volotile" or text == "extern" or text == "packed") and token.type == "keyword" then
                                 vim.lsp.semantic_tokens.highlight_token(token, args.buf, args.data.client_id, "@keyword.modifier.zig")
                             end
                         end,

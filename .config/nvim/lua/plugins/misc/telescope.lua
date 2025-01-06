@@ -6,6 +6,7 @@ return {
     event = "VimEnter",
     dependencies = {
         "nvim-lua/plenary.nvim",
+        -- "nui.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
@@ -22,8 +23,32 @@ return {
                 extentions = {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown(),
-                    }
-                }
+                    },
+                },
+                defaults = {
+                    layout_strategy = nil,
+                    layout_config = nil,
+                    borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                },
+                pickers = {
+                    live_grep = {
+                        layout_strategy = "vertical",
+                        layout_config = {
+                            width = function(_, cols, _)
+                                if cols > 200 then
+                                    return 170
+                                else
+                                    return math.floor(cols * 0.87)
+                                end
+                            end,
+                            preview_cutoff = 1,
+                            -- width = 0.9,
+                            -- height = 0.9,
+                            -- preview_cutoff = 1,
+                            -- mirror = true,
+                        },
+                    },
+                },
             })
             pcall(telescope.load_extension, "fzf")
             pcall(telescope.load_extension, "ui-select")
@@ -42,12 +67,10 @@ return {
             vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Search Buffers" })
 
             vim.keymap.set("n", "<leader>/", function()
-                builtin.current_buffer_fuzzy_find(
-                    require("telescope.themes").get_dropdown({
-                        winblend = 10,
-                        previewer = false,
-                    })
-                )
+                builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+                    winblend = 10,
+                    previewer = false,
+                }))
             end, { desc = "Fuzzily search in current buffer" })
 
             vim.keymap.set("n", "<leader>s/", function()
@@ -58,7 +81,7 @@ return {
             end, { desc = "Search in Open Files" })
 
             vim.keymap.set("n", "<leader>sn", function()
-                builtin.find_files({ cwd = vim.fn.stdpath "config" })
+                builtin.find_files({ cwd = vim.fn.stdpath("config") })
             end, { desc = "Search Neovim Files" })
         end
     end,

@@ -1,0 +1,47 @@
+# The syntax is "key = value". The whitespace around the equals doesn't matter.
+background = #161616
+foreground= #ffffff
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+keybind = ctrl+z=close_surface
+keybind = ctrl+d=new_split:right
+
+adjust-cell-height   = 9
+adjust-cursor-height = 9
+
+# Empty values reset the configuration to the default value
+
+font-family = JetBrainsMono NFM
+font-family-bold = JetBrainsMono NFM Bold
+font-family-italic = JetBrainsMono NFM Italic
+font-family-bold-italic = JetBrainsMono NFM Bold Italic
+font-size = 14
+
+# Colors can be changed by setting the 16 colors of `palette`, which each color
+# being defined as regular and bold.
+#
+# black
+palette = 0=#090909
+palette = 8=#adb5bd
+# red
+palette = 1=#fa4d56
+palette = 9=#da1e28
+# green
+palette = 2=#42be65
+palette = 10=#36ce5e
+# yellow
+palette = 3=#ff832b
+palette = 11=#f1c21b
+# blue
+palette = 4=#33b1ff
+palette = 12=#0f62fe
+# purple
+palette = 5=#ae7aff
+palette = 13=#a56eff
+# aqua
+palette = 6=#08bdba
+palette = 14=#3ddbd9
+# white
+palette = 7=#dde1e6
+palette = 15=#e8e8e8
