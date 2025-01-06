@@ -22,6 +22,7 @@ init_dots:
     .config/alacritty
     .config/rofi
     .config/hypr
+    .config/awesome
     .config/waybar
     .bashrc
     .zshrc
@@ -57,7 +58,7 @@ install_fonts:
 
 install_gui:
     #!/bin/sh
-    paru -Syu --noconfirm hyprland wayland wayland-protocols wlr-protocols plasma-wayland-protocols frog-protocols xorg-server xorg-xrandr wl-clipboard xclip firefox alacritty foot waybar obs-studio code zed emacs feh mpv flameshot grim slurp swww intellij-idea-community-edition qalculate-qt unclutter wlroots wlroots-git webcord-bin awesome-luajit-git picom-git
+    paru -Syu --noconfirm hyprland wayland wayland-protocols wlr-protocols plasma-wayland-protocols frog-protocols xorg-server xorg-xrandr xorg-xauth wl-clipboard xclip firefox alacritty foot waybar obs-studio code zed emacs feh mpv flameshot grim slurp swww intellij-idea-community-edition qalculate-qt unclutter wlroots wlroots-git webcord-bin awesome-luajit-git picom-git
 
 install_lang:
     #!/bin/sh
@@ -102,12 +103,14 @@ install_nvidia_drivers:
     sed -i -E "s/^MODULES=.*\$/$NEW_MODULES_LINE/" "$MKINITCPIO_CONF"
 
     echo "Updated MODULES array in $MKINITCPIO_CONF: $NEW_MODULES_LINE"
+    sudo mkinitcpio -P
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 
 
 install_vm:
     #!/bin/sh
-    paru -Syu --noconfirm qemu-full virt-manager virt-viewer vde2 ebtables iptables-nft nftables dnsmasq bridge-utils ovmf swtpm
+    paru -Syu --ask 4 qemu-full virt-manager virt-viewer vde2 ebtables iptables-nft nftables dnsmasq bridge-utils ovmf swtpm
     cd $HOME/repos/dotfiles
     sudo sed -i "s/#unix_sock_group/unix_sock_group/g" /etc/libvirt/libvirtd.conf
     sudo sed -i "s/#unix_sock_rw_perms/unix_sock_rw_perms/g" /etc/libvirt/libvirtd.conf
