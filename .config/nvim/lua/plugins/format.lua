@@ -3,6 +3,15 @@ return {
     dependencies = { "williamboman/mason.nvim", config = true },
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
+
+    init = function()
+        local cf = require("conform.formatters.clang-format")
+        cf.cwd = require("conform.util").root_file({
+            ".clang-format",
+        })
+        cf.require_cwd = true
+    end,
+
     keys = {
         {
             "<leader>fb",
@@ -13,6 +22,7 @@ return {
             desc = "Format Buffer",
         },
     },
+
     opts = {
         notify_on_error = false,
         format_on_save = function(bufnr)
@@ -26,6 +36,7 @@ return {
             else
                 lsp_format_opt = "fallback"
             end
+
             return {
                 timeout_ms = 500,
                 lsp_format = lsp_format_opt,
@@ -33,7 +44,8 @@ return {
         end,
         formatters_by_ft = {
             lua = { "stylua" },
-            -- c = { "clang-format" },
+            c = { "clang-format" },
+            cpp = { "clang-format" },
         },
     },
 }

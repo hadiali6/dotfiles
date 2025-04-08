@@ -1,12 +1,8 @@
-local pcall = pcall
-local require = require
-
 return {
     "nvim-telescope/telescope.nvim",
     event = "VimEnter",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        -- "nui.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
@@ -42,10 +38,6 @@ return {
                                 end
                             end,
                             preview_cutoff = 1,
-                            -- width = 0.9,
-                            -- height = 0.9,
-                            -- preview_cutoff = 1,
-                            -- mirror = true,
                         },
                     },
                 },

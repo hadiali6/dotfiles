@@ -1,6 +1,3 @@
-local vim = vim
-local require = require
-
 ---@alias plugin_key { key: string, cmd: string|function, desc: string? }
 
 ---@param mapping string
@@ -11,7 +8,7 @@ local function map(mapping, func, desc)
     return { mapping, func, desc }
 end
 
-local toggler = false
+local toggle_state = false
 
 return {
     "mfussenegger/nvim-lint",
@@ -24,12 +21,12 @@ return {
                 lua = { "selene" },
             }
             local ns = lint.get_namespace(lint.linters_by_ft[vim.bo.ft][1])
-            if toggler == true then
+            if toggle_state == true then
                 vim.diagnostic.reset(ns, vim.api.nvim_get_current_buf())
-                toggler = false
+                toggle_state = false
             else
                 lint.try_lint()
-                toggler = true
+                toggle_state = true
             end
         end, "Lint Buffer"),
     },
